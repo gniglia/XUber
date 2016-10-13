@@ -6,7 +6,8 @@ import {
   MapView,
   TouchableHighlight,
   ActivityIndicator,
-  Modal
+  Modal,
+  Image
 } from 'react-native';
 
 export default class RideMap extends Component {
@@ -15,7 +16,44 @@ export default class RideMap extends Component {
     this.state = {
       animating: false,
       showModal: false,
-      showPickUp: true
+      showPickUp: true,
+      people: [
+        {
+          _id: 1,
+          latitude: -36.8584732,
+          longitude: 174.7881418,
+          title: 'John',
+          image: require('./car.png')
+        },
+        {
+          _id: 2,
+          latitude: -36.852080,
+          longitude: 174.814806,
+          title: 'Linda',
+          image: require('./car.png')
+        },
+        {
+          _id: 3,
+          latitude: -36.84850,
+          longitude: 174.765332,
+          title: 'Peter',
+          image: require('./car.png')
+        },
+        {
+          _id: 4,
+          latitude: -36.874775,
+          longitude: 174.784367,
+          title: 'Elaine',
+          image: require('./car.png'),
+        },
+        {
+          _id: 5,
+          latitude: -36.868491,
+          longitude: 174.778032,
+          title: 'Me',
+          image: require('./xero_logo_1.png')
+        }
+      ]
     }
   }
 
@@ -39,6 +77,7 @@ export default class RideMap extends Component {
     console.log('cerramo');
     this.setModalVisibility(false);
     this.setPickUpVisibility(false);
+    this.setPeople();
   }
 
   gotIt() {
@@ -68,6 +107,10 @@ export default class RideMap extends Component {
     )
   }
 
+  setPeople() {
+    this.setState({people: this.state.people.filter(people => people._id > 3)});
+  }
+
   render() {
     const modalBackgroundStyle = {
       backgroundColor: 'rgba(0, 0, 0, 0.5)'
@@ -86,15 +129,22 @@ export default class RideMap extends Component {
           >
           <View style={[styles.modalContainer, modalBackgroundStyle]}>
             <View style={[styles.modalInnerContainer, innerContainerTransparentStyle]}>
-              <View style={{flex: 3}}>
-                <Text>Name: Pepe</Text>
-                <Text>ETA: 6 minutes</Text>
-              </View>
-              <View style={{flex: 1}}>
-                <TouchableHighlight
-                  onPress={this.onModalClose.bind(this)}>
-                  <Text style={{color: '#264762'}}>Close</Text>
-                </TouchableHighlight>
+              <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+                <View>
+                  <Image
+                    source={require('./avatar_elaine.png')}
+                    />
+                </View>
+                <View style={{flex: 3}}>
+                  <Text>Elaine Seinfeld - Sales & Marketing</Text>
+                  <Text>ETA: 12min</Text>
+                </View>
+                <View style={{flex: 1}}>
+                  <TouchableHighlight
+                    onPress={this.onModalClose.bind(this)}>
+                    <Text style={{color: '#264762'}}>Close</Text>
+                  </TouchableHighlight>
+                </View>
               </View>
             </View>
           </View>
@@ -110,37 +160,7 @@ export default class RideMap extends Component {
               latitudeDelta: 0.010,
               longitudeDelta: 0.070
             }}
-            annotations={[
-            {
-              latitude: -36.874775,
-              longitude: 174.784367,
-              title: 'pepe',
-              image: require('./car.png')
-            },
-            {
-              latitude: -36.8584732,
-              longitude: 174.7881418,
-              title: 'pepe',
-              image: require('./car.png')
-            },
-            {
-              latitude: -36.852080,
-              longitude: 174.814806,
-              title: 'pepe',
-              image: require('./car.png')
-            },
-            {
-              latitude: -36.84850,
-              longitude: 174.765332,
-              title: 'pepe',
-              image: require('./car.png')
-            },
-            {
-              latitude: -36.868491,
-              longitude: 174.778032,
-              title: 'Me'
-            }
-            ]}
+            annotations={this.state.people}
           />
         </View>
         <View style={styles.buttonContainer}>
@@ -184,8 +204,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   modalInnerContainer: {
-    height: 150,
+    height: 250,
     borderRadius: 10,
     alignItems: 'center',
   },
-})
+});
