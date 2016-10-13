@@ -5,7 +5,8 @@ import {
   View,
   Image,
   TextInput,
-  TouchableHighlight
+  TouchableHighlight,
+  Image
 } from 'react-native';
 var styles = require('../styles/styles');
 
@@ -45,8 +46,16 @@ export default class Register extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <View style={[styles.container]}>
         <View style={[styles.logo]}>
+=======
+      <Image
+        source={{uri: 'https://images.unsplash.com/photo-1453856908826-6bbeda0f8490?dpr=1&auto=format&crop=entropy&fit=crop&w=767&h=1152&q=80&cs=tinysrgb'}}
+        style={styles.container}>
+      <View style={[styles.container, this.border('yellow')]}>
+        <View style={[styles.logo, this.border('black')]}>
+>>>>>>> e2bf5677bf2a98ae3d358ffa8780f7b5eb5eca57
           <Text style={styles.txtLogo}>xuber</Text>
         </View>
 
@@ -60,7 +69,12 @@ export default class Register extends Component {
         <View style={[styles.inputContainer]}>
           <Text style={styles.inputLabel}>Your Name?</Text>
           <TextInput
+<<<<<<< HEAD
             style={[styles.input]}
+=======
+          keyboardType='numeric'
+            style={{height: 40, borderColor: 'gray', borderWidth: 1, backgroundColor: '#eeeeee'}}
+>>>>>>> e2bf5677bf2a98ae3d358ffa8780f7b5eb5eca57
             onChangeText={text => this.setState({ userName: text })}
             value={this.state.userName} />
         </View>
@@ -78,6 +92,48 @@ export default class Register extends Component {
           </View>
         </View>
       </View>
+      </Image>
     );
   }
 };
+<<<<<<< HEAD
+=======
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'stretch',
+  },
+  logo: {
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  txtLogo: {
+    fontSize: 40
+  },
+  image: {
+    flex: 7
+  },
+  input: {
+    flex: 2,
+    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  txtName: {
+    color: 'white'
+  },
+  buttons: {
+    flex: 2,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  buttontext: {
+    color: 'white',
+    fontSize: 15,
+    fontWeight: 'bold'
+  }
+});
+>>>>>>> e2bf5677bf2a98ae3d358ffa8780f7b5eb5eca57

@@ -4,7 +4,8 @@ import {
   Text,
   View,
   Navigator,
-  TouchableHighlight
+  TouchableHighlight,
+  StatusBar
 } from 'react-native';
 import Register from './Register';
 import RideMap from './RideMap';
@@ -21,7 +22,7 @@ const navigatorBarRouteMaper = {
           navigator.pop();
         }
       }}>
-        <Text>Back</Text>
+        <Text style={{fontSize: 30, color: 'white'}}>{' <'}</Text>
       </TouchableHighlight>
     )
   },
@@ -32,7 +33,7 @@ const navigatorBarRouteMaper = {
     }
 
     return (
-      <Text>{route.title}</Text>
+      <Text style={{fontSize: 30, color: 'white'}}>xuber</Text>
     )
   }
 };
@@ -40,10 +41,12 @@ const navigatorBarRouteMaper = {
 const renderScene = (route, navigator) => {
   switch (route.name) {
     case 'Register':
+      StatusBar.setBarStyle('default');
       return (
         <Register route={route} navigator={navigator} />
       )
     case 'RideMap':
+      StatusBar.setBarStyle('light-content');
       return (
         <RideMap route={route} navigator={navigator} />
       )
@@ -53,6 +56,7 @@ const renderScene = (route, navigator) => {
 const App = () => {
   return (
     <Navigator
+      style={{backgroundColor: '#264762'}}
       initialRoute={{name: 'Register'}}
       renderScene={renderScene}
       configureScene={(route) => {
