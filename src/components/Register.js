@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   TextInput,
   TouchableHighlight
 } from 'react-native';
@@ -43,31 +44,37 @@ export default class Register extends Component {
 
   render() {
     return (
-      <View style={[styles.container, this.border('yellow')]}>
-        <View style={[styles.logo, this.border('black')]}>
+      <View style={[styles.container]}>
+        <View style={[styles.logo]}>
           <Text style={styles.txtLogo}>xuber</Text>
         </View>
 
-        <View style={[styles.image, this.border('blue')]}>
+        <View style={[styles.imageContainer]}>
+          <Image
+            style={[styles.image]}
+            source={require('../images/userpic.png')}
+          />
         </View>
 
-        <View style={[styles.input, this.border('red')]}>
-          <Text style={styles.txtName}>Your Name?</Text>
+        <View style={[styles.inputContainer]}>
+          <Text style={styles.inputLabel}>Your Name?</Text>
           <TextInput
-            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+            style={[styles.input]}
             onChangeText={text => this.setState({ userName: text })}
             value={this.state.userName} />
         </View>
-
-        <View style={[styles.buttonContainer, this.border('green')]}>
-          <TouchableHighlight style={[this.border('red'), styles.button]}
-            onPress={this.onPassengerPress.bind(this)}>
-            <Text style={styles.buttontext}>I need a ride</Text>
-          </TouchableHighlight>
-          <TouchableHighlight style={[this.border('red'), styles.button]}
-            onPress={this.onDriverPress.bind(this)}>
-            <Text style={styles.buttontext}>Im driving</Text>
-          </TouchableHighlight>
+        <View style={[styles.lalala]}>
+          <Text style={styles.buttonContainerLabel}>Which are you today?</Text>
+          <View style={[styles.buttonContainer]}>
+            <TouchableHighlight style={[styles.button]}
+              onPress={this.onPassengerPress.bind(this)}>
+              <Text style={styles.buttontext}>Im a driver</Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={[styles.button]}
+              onPress={this.onDriverPress.bind(this)}>
+              <Text style={styles.buttontext}>Im a passenger</Text>
+            </TouchableHighlight>
+          </View>
         </View>
       </View>
     );
