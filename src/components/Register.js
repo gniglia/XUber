@@ -4,8 +4,11 @@ import {
   Text,
   View,
   TextInput,
-  TouchableHighlight
+  TouchableHighlight,
+  Image
 } from 'react-native';
+
+
 
 export default class Register extends Component {
   constructor(props) {
@@ -17,7 +20,6 @@ export default class Register extends Component {
     console.log('passenger..')
 
     this.props.navigator.push({
-      title: 'Passenger Map',
       name: 'RideMap',
       passProps: {}
     });
@@ -36,12 +38,15 @@ export default class Register extends Component {
   border(color) {
     return {
       borderColor: color,
-      borderWidth: 4
+      borderWidth: 0
     }
   }
 
   render() {
     return (
+      <Image
+        source={{uri: 'https://images.unsplash.com/photo-1453856908826-6bbeda0f8490?dpr=1&auto=format&crop=entropy&fit=crop&w=767&h=1152&q=80&cs=tinysrgb'}}
+        style={styles.container}>
       <View style={[styles.container, this.border('yellow')]}>
         <View style={[styles.logo, this.border('black')]}>
           <Text style={styles.txtLogo}>xuber</Text>
@@ -53,7 +58,8 @@ export default class Register extends Component {
         <View style={[styles.input, this.border('red')]}>
           <Text style={styles.txtName}>Your Name?</Text>
           <TextInput
-            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          keyboardType='numeric'
+            style={{height: 40, borderColor: 'gray', borderWidth: 1, backgroundColor: '#eeeeee'}}
             onChangeText={text => this.setState({ userName: text })}
             value={this.state.userName} />
         </View>
@@ -69,6 +75,7 @@ export default class Register extends Component {
           </TouchableHighlight>
         </View>
       </View>
+      </Image>
     );
   }
 };
@@ -76,7 +83,7 @@ export default class Register extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10
+    alignItems: 'stretch',
   },
   logo: {
     flex: 2,
@@ -87,15 +94,16 @@ const styles = StyleSheet.create({
     fontSize: 40
   },
   image: {
-    flex: 6
+    flex: 7
   },
   input: {
-    flex: 3,
+    flex: 2,
+    padding: 20,
     justifyContent: 'center',
     alignItems: 'center'
   },
   txtName: {
-
+    color: 'white'
   },
   buttons: {
     flex: 2,
@@ -104,6 +112,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   buttontext: {
-    color: 'blue'
+    color: 'white',
+    fontSize: 15,
+    fontWeight: 'bold'
   }
 });
