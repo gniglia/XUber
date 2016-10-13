@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
   Modal
 } from 'react-native';
+var styles = require('../styles/styles');
 
 export default class RideMap extends Component {
   constructor(props) {
