@@ -10,6 +10,7 @@ import {
 import Register from './Register';
 import RideMap from './RideMap';
 import DriverMap from './DriverMap';
+var styles = require('../styles/styles');
 
 const navigatorBarRouteMaper = {
   LeftButton: (route, navigator, index) => {
