@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableHighlight
 } from 'react-native';
+var styles = require('../styles/styles');
 
 export default class Register extends Component {
   constructor(props) {
@@ -58,12 +59,12 @@ export default class Register extends Component {
             value={this.state.userName} />
         </View>
 
-        <View style={[styles.buttons, this.border('green')]}>
-          <TouchableHighlight
+        <View style={[styles.buttonContainer, this.border('green')]}>
+          <TouchableHighlight style={[this.border('red'), styles.button]}
             onPress={this.onPassengerPress.bind(this)}>
             <Text style={styles.buttontext}>I need a ride</Text>
           </TouchableHighlight>
-          <TouchableHighlight
+          <TouchableHighlight style={[this.border('red'), styles.button]}
             onPress={this.onDriverPress.bind(this)}>
             <Text style={styles.buttontext}>Im driving</Text>
           </TouchableHighlight>
@@ -72,38 +73,3 @@ export default class Register extends Component {
     );
   }
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10
-  },
-  logo: {
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  txtLogo: {
-    fontSize: 40
-  },
-  image: {
-    flex: 6
-  },
-  input: {
-    flex: 3,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  txtName: {
-
-  },
-  buttons: {
-    flex: 2,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center'
-  },
-  buttontext: {
-    color: 'blue'
-  }
-});

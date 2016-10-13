@@ -4,6 +4,7 @@ import {
   Text,
   View
 } from 'react-native';
+var styles = require('../styles/styles');
 
 const RideMap = () => {
   return (
@@ -16,10 +17,3 @@ const RideMap = () => {
 };
 
 export default RideMap;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 40
-  }
-})
