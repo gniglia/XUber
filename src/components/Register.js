@@ -60,7 +60,7 @@ export default class Register extends Component {
         <View style={[styles.inputContainer]}>
           <Text style={styles.inputLabel}>Your Name?</Text>
           <TextInput
-            style={[styles.input]}
+            style={[styles.inputText]}
             onChangeText={text => this.setState({ userName: text })}
             value={this.state.userName} />
         </View>
@@ -71,7 +71,8 @@ export default class Register extends Component {
               onPress={this.onPassengerPress.bind(this)}>
               <Text style={styles.buttontext}>Im a driver</Text>
             </TouchableHighlight>
-            <TouchableHighlight style={[styles.button]}
+            <TouchableHighlight underlayColor={['cornflowerblue']}
+              style={[styles.button]}
               onPress={this.onDriverPress.bind(this)}>
               <Text style={styles.buttontext}>Im a passenger</Text>
             </TouchableHighlight>

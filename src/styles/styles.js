@@ -7,6 +7,7 @@ var {
 } = React;
 
 var blue = '#2baaed';
+var onTouchBlue = 'cornflowerblue';
 
 module.exports = StyleSheet.create({
   //main view container
@@ -14,6 +15,9 @@ module.exports = StyleSheet.create({
     flex: 1,
     padding: 10,
     backgroundColor: 'ghostwhite'
+  },
+  mainContainer: {
+    flex: 1
   },
 
   // logo
@@ -49,14 +53,18 @@ module.exports = StyleSheet.create({
     color: 'grey',
     fontWeight: '600',
     paddingVertical: 5,
+    marginBottom: 1,
 
   },
-  input: {
+  inputText: {
     backgroundColor: 'white',
     borderRadius: 3,
+    borderTopWidth: 2,
     height: 40,
-    borderColor: 'gray',
-    borderWidth: .4,
+    borderColor: 'grey',
+    borderWidth: .2,
+    paddingHorizontal: 10,
+    alignItems: 'center',
   },
 
   //button
@@ -98,5 +106,15 @@ module.exports = StyleSheet.create({
     fontSize: 15,
     fontWeight: '500'
   },
+
+  backButtonHighlight: {
+    paddingHorizontal: 2,
+    borderRadius: 5,
+  },
+
+  backButton: {
+    fontSize: 30,
+    color: 'white',
+  }
 
 });
