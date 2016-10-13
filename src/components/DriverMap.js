@@ -11,47 +11,46 @@ import {
 } from 'react-native';
 var styles = require('../styles/styles');
 
-export default class RideMap extends Component {
+export default class DriverMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      animating: false,
+      animating: true,
       showModal: false,
-      showPickUp: true,
       people: [
         {
           _id: 1,
           latitude: -36.8584732,
           longitude: 174.7881418,
           title: 'John',
-          image: require('./car.png')
+          image: require('../images/xero_logo_1.png')
         },
         {
           _id: 2,
           latitude: -36.852080,
           longitude: 174.814806,
           title: 'Linda',
-          image: require('./car.png')
+          image: require('../images/xero_logo_1.png')
         },
         {
           _id: 3,
           latitude: -36.84850,
           longitude: 174.765332,
-          title: 'Peter',
-          image: require('./car.png')
+          title: 'Elaine',
+          image: require('../images/xero_logo_1.png')
         },
         {
           _id: 4,
           latitude: -36.874775,
           longitude: 174.784367,
-          title: 'Elaine',
-          image: require('./car.png'),
+          title: 'Peter',
+          image: require('./car.png')
         },
         {
           _id: 5,
           latitude: -36.868491,
           longitude: 174.778032,
-          title: 'Me',
+          title: 'Elaine',
           image: require('../images/xero_logo_1.png')
         }
       ]
@@ -62,23 +61,8 @@ export default class RideMap extends Component {
     this.setState({ showModal: show })
   }
 
-  setPickUpVisibility(show) {
-    this.setState({ showPickUp: show })
-  }
-
-  onRequest() {
-    this.setState({ animating: true });
-    setTimeout(() => {
-      this.setState({ animating: false });
-      this.setModalVisibility(true);
-    }, 6000);
-  }
-
-  onModalClose() {
-    console.log('cerramo');
+  closeModal() {
     this.setModalVisibility(false);
-    this.setPickUpVisibility(false);
-    this.setPeople();
   }
 
   gotIt() {
@@ -88,28 +72,16 @@ export default class RideMap extends Component {
     });
   }
 
-  showButtons() {
-    console.log('pasoooo');
-    if (this.state.showPickUp) {
-      return (
-        <TouchableHighlight onPress={this.onRequest.bind(this)}>
-          <View>
-            <Text style={{fontSize:18, color:'#264762'}}>Request Pick up</Text>
-          </View>
-        </TouchableHighlight>
-      )
-    }
-    return (
-      <TouchableHighlight onPress={this.gotIt.bind(this)}>
-        <View>
-          <Text style={{fontSize:18, color:'#F42156'}}>{'       GOT IT!'}</Text>
-        </View>
-      </TouchableHighlight>
-    )
-  }
-
   setPeople() {
     this.setState({people: this.state.people.filter(people => people._id > 3)});
+  }
+
+  onResponse(pickup) {
+    if (pickup) {
+      this.setState({ animating: false});
+      this.setPeople();
+    }
+    this.closeModal();
   }
 
   render() {
@@ -120,6 +92,16 @@ export default class RideMap extends Component {
       backgroundColor: '#fff',
       padding: 20
     };
+
+    const timeout = setTimeout(() => {
+        this.setModalVisibility(true);
+      }, 6000);
+
+    console.log('animating', this.state.animating)
+
+    if (!this.state.animating) {
+      clearTimeout(timeout);
+    }
 
     return (
       <View style={styles.container}>
@@ -133,17 +115,26 @@ export default class RideMap extends Component {
               <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
                 <View>
                   <Image
-                    source={require('../images/avatar_elaine.png')}
+                    source={require('../images/avatar_jerry.png')}
                     />
                 </View>
                 <View style={{flex: 3}}>
                   <Text>Elaine Seinfeld - Sales & Marketing</Text>
                   <Text>ETA: 12min</Text>
                 </View>
-                <View style={{flex: 1}}>
-                  <TouchableHighlight
-                    onPress={this.onModalClose.bind(this)}>
-                    <Text style={{color: '#264762'}}>Close</Text>
+
+                <View style={[styles.buttonContainer]}>
+                  <TouchableHighlight style={[styles.button]}
+                    onPress={() => {
+                      this.onResponse(false)
+                    }}>
+                    <Text style={{color: '#264762'}}>No :(</Text>
+                  </TouchableHighlight>
+                  <TouchableHighlight style={[styles.button]}
+                    onPress={() => {
+                      this.onResponse(true)
+                    }}>
+                    <Text style={{color: '#264762'}}>Yes :)</Text>
                   </TouchableHighlight>
                 </View>
               </View>
@@ -164,17 +155,6 @@ export default class RideMap extends Component {
             annotations={this.state.people}
           />
         </View>
-        <View style={styles.buttonContainer}>
-          <View style={{flex:2, alignItems: 'flex-end'}}>
-            <ActivityIndicator
-              size='large'
-              style={{padding: 8}}
-              animating={this.state.animating} />
-          </View>
-          <View style={{flex:5}}>
-            {this.showButtons()}
-          </View>
-        </View>
       </View>
     );
   }
@@ -191,14 +171,6 @@ const styles = StyleSheet.create({
   map: {
     flex: 1,
   },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    padding: 10,
-    backgroundColor: 'white'
-  },
-
   modalContainer: {
     flex: 1,
     justifyContent: 'center',

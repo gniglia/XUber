@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import Register from './Register';
 import RideMap from './RideMap';
+import DriverMap from './DriverMap';
 
 const navigatorBarRouteMaper = {
   LeftButton: (route, navigator, index) => {
@@ -49,6 +50,11 @@ const renderScene = (route, navigator) => {
       StatusBar.setBarStyle('light-content');
       return (
         <RideMap route={route} navigator={navigator} />
+      )
+    case 'DriverMap':
+      StatusBar.setBarStyle('light-content');
+      return (
+        <DriverMap route={route} navigator={navigator} />
       )
   }
 };

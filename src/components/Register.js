@@ -18,8 +18,6 @@ export default class Register extends Component {
   }
 
   onPassengerPress() {
-    console.log('passenger..')
-
     this.props.navigator.push({
       name: 'RideMap',
       passProps: {}
@@ -27,20 +25,10 @@ export default class Register extends Component {
   }
 
   onDriverPress() {
-    console.log('driving..')
-
     this.props.navigator.push({
-      title: 'Driver Map',
-      name: 'RideMap',
+      name: 'DriverMap',
       passProps: {}
     });
-  }
-
-  border(color) {
-    return {
-      borderColor: color,
-      borderWidth: 0
-    }
   }
 
   render() {
@@ -68,11 +56,11 @@ export default class Register extends Component {
           <Text style={styles.buttonContainerLabel}>Which are you today?</Text>
           <View style={[styles.buttonContainer]}>
             <TouchableHighlight style={[styles.button]}
-              onPress={this.onPassengerPress.bind(this)}>
+              onPress={this.onDriverPress.bind(this)}>
               <Text style={styles.buttontext}>Im a driver</Text>
             </TouchableHighlight>
             <TouchableHighlight style={[styles.button]}
-              onPress={this.onDriverPress.bind(this)}>
+              onPress={this.onPassengerPress.bind(this)}>
               <Text style={styles.buttontext}>Im a passenger</Text>
             </TouchableHighlight>
           </View>
