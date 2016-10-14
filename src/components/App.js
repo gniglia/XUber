@@ -10,6 +10,7 @@ import {
 import Register from './Register';
 import RideMap from './RideMap';
 import DriverMap from './DriverMap';
+var styles = require('../styles/styles');
 
 const navigatorBarRouteMaper = {
   LeftButton: (route, navigator, index) => {
@@ -18,12 +19,15 @@ const navigatorBarRouteMaper = {
     }
 
     return (
-      <TouchableHighlight onPress={() => {
+      <TouchableHighlight
+      underlayColor={ 'transparent' }
+      style={[styles.backButtonHighlight]}
+      onPress={() => {
         if (index > 0) {
           navigator.pop();
         }
       }}>
-        <Text style={{fontSize: 30, color: 'white'}}>{' <'}</Text>
+        <Text style={[styles.backButton]}>{' <'}</Text>
       </TouchableHighlight>
     )
   },
@@ -79,9 +83,3 @@ const App = () => {
 };
 
 export default App;
-
-const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1
-  }
-});

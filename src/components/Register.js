@@ -48,7 +48,7 @@ export default class Register extends Component {
         <View style={[styles.inputContainer]}>
           <Text style={styles.inputLabel}>Your Name?</Text>
           <TextInput
-            style={[styles.input]}
+            style={[styles.inputText]}
             onChangeText={text => this.setState({ userName: text })}
             value={this.state.userName} />
         </View>
