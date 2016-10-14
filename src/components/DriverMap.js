@@ -94,8 +94,8 @@ export default class DriverMap extends Component {
     };
 
     const timeout = setTimeout(() => {
-        this.setModalVisibility(true);
-      }, 6000);
+        this.setModalVisibility(this.state.animating);
+      }, 8000);
 
     console.log('animating', this.state.animating)
 
@@ -113,28 +113,28 @@ export default class DriverMap extends Component {
           <View style={[styles.modalContainer, modalBackgroundStyle]}>
             <View style={[styles.modalInnerContainer, innerContainerTransparentStyle]}>
               <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-                <View>
-                  <Image
-                    source={require('../images/avatar_jerry.png')}
-                    />
-                </View>
-                <View style={{flex: 3}}>
-                  <Text>Elaine Seinfeld - Sales & Marketing</Text>
-                  <Text>ETA: 12min</Text>
-                </View>
-
+              <View>
+                 <Image
+                   source={require('../images/avatar_jerry.png')}
+                   />
+               </View>
+               <View style={{flex: 3}}>
+                 <Text>Jerry is waiting for a lift from</Text>
+                 <Text>38 Broadway Street, Newmarket</Text>
+                 <Text>Its on your way, can you give them a lift?</Text>
+               </View>
                 <View style={[styles.buttonContainer]}>
-                  <TouchableHighlight style={[styles.button]}
+                  <TouchableHighlight underlayColor={ 'transparent' } style={[styles.button]}
                     onPress={() => {
                       this.onResponse(false)
                     }}>
-                    <Text style={{color: '#264762'}}>No :(</Text>
+                    <Text style={[styles.buttontext]}>No :(</Text>
                   </TouchableHighlight>
-                  <TouchableHighlight style={[styles.button]}
+                  <TouchableHighlight underlayColor={ 'transparent' } style={[styles.button]}
                     onPress={() => {
                       this.onResponse(true)
                     }}>
-                    <Text style={{color: '#264762'}}>Yes :)</Text>
+                    <Text style={[styles.buttontext]}>Yes :)</Text>
                   </TouchableHighlight>
                 </View>
               </View>

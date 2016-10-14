@@ -135,6 +135,36 @@ modalContainer: {
   padding: 20,
 },
 modalInnerContainer: {
+  height: 300,
+  borderRadius: 10,
+  alignItems: 'center',
+},
+
+//rider map
+rideContainer: {
+  flex: 1,
+  marginTop: 65
+},
+rideMapContainer: {
+  flex:12
+},
+map: {
+  flex: 1,
+},
+rideButtonContainer: {
+  flexDirection: 'row',
+  justifyContent: 'space-around',
+  alignItems: 'center',
+  padding: 10,
+  backgroundColor: 'white'
+},
+
+rideModalContainer: {
+  flex: 1,
+  justifyContent: 'center',
+  padding: 20,
+},
+rideModalInnerContainer: {
   height: 250,
   borderRadius: 10,
   alignItems: 'center',
