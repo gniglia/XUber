@@ -104,7 +104,7 @@ export default class DriverMap extends Component {
     }
 
     return (
-      <View style={styles.container}>
+      <View style={styles.containerDriverMap}>
         <Modal
           animationType={'slide'}
           transparent={true}
@@ -159,26 +159,3 @@ export default class DriverMap extends Component {
     );
   }
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 65
-  },
-  mapContainer: {
-    flex:12
-  },
-  map: {
-    flex: 1,
-  },
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 20,
-  },
-  modalInnerContainer: {
-    height: 250,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-});

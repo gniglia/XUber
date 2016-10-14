@@ -115,6 +115,29 @@ module.exports = StyleSheet.create({
   backButton: {
     fontSize: 30,
     color: 'white',
-  }
+  },
+
+//driver Map
+
+containerDriverMap: {
+  flex: 1,
+  marginTop: 65
+},
+mapContainer: {
+  flex:12
+},
+map: {
+  flex: 1,
+},
+modalContainer: {
+  flex: 1,
+  justifyContent: 'center',
+  padding: 20,
+},
+modalInnerContainer: {
+  height: 250,
+  borderRadius: 10,
+  alignItems: 'center',
+},
 
 });
