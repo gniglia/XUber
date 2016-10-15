@@ -71,7 +71,7 @@ export default class RideMap extends Component {
     setTimeout(() => {
       this.setState({ animating: false });
       this.setModalVisibility(true);
-    }, 6000);
+    }, 10000);
   }
 
   onModalClose() {
@@ -92,7 +92,7 @@ export default class RideMap extends Component {
     console.log('pasoooo');
     if (this.state.showPickUp) {
       return (
-        <TouchableHighlight onPress={this.onRequest.bind(this)}>
+        <TouchableHighlight underlayColor={ 'transparent' } onPress={this.onRequest.bind(this)}>
           <View>
             <Text style={{fontSize:18, color:'#264762'}}>Request Pick up</Text>
           </View>
@@ -100,7 +100,7 @@ export default class RideMap extends Component {
       )
     }
     return (
-      <TouchableHighlight onPress={this.gotIt.bind(this)}>
+      <TouchableHighlight underlayColor={ 'transparent' } onPress={this.gotIt.bind(this)}>
         <View>
           <Text style={{fontSize:18, color:'#F42156'}}>{'       GOT IT!'}</Text>
         </View>
@@ -122,14 +122,14 @@ export default class RideMap extends Component {
     };
 
     return (
-      <View style={styles.container}>
+      <View style={styles.rideContainer}>
         <Modal
           animationType={'slide'}
           transparent={true}
           visible={this.state.showModal}
           >
-          <View style={[styles.modalContainer, modalBackgroundStyle]}>
-            <View style={[styles.modalInnerContainer, innerContainerTransparentStyle]}>
+          <View style={[styles.rideModalContainer, modalBackgroundStyle]}>
+            <View style={[styles.rideModalInnerContainer, innerContainerTransparentStyle]}>
               <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
                 <View>
                   <Image
@@ -140,10 +140,10 @@ export default class RideMap extends Component {
                   <Text>Elaine Seinfeld - Sales & Marketing</Text>
                   <Text>ETA: 12min</Text>
                 </View>
-                <View style={{flex: 1}}>
-                  <TouchableHighlight
+                <View style={{flex: 1, flexDirection: 'row'}}>
+                  <TouchableHighlight underlayColor={ 'transparent' } style={[styles.button, {flex: 1, marginBottom: 12 }]}
                     onPress={this.onModalClose.bind(this)}>
-                    <Text style={{color: '#264762'}}>Close</Text>
+                    <Text style={[styles.buttontext]}>Close</Text>
                   </TouchableHighlight>
                 </View>
               </View>
@@ -151,7 +151,7 @@ export default class RideMap extends Component {
           </View>
         </Modal>
 
-        <View style={styles.mapContainer}>
+        <View style={styles.rideMapContainer}>
           <MapView
             style={styles.map}
             showsUserLocation={true}
@@ -164,7 +164,7 @@ export default class RideMap extends Component {
             annotations={this.state.people}
           />
         </View>
-        <View style={styles.buttonContainer}>
+        <View style={styles.rideButtonContainer}>
           <View style={{flex:2, alignItems: 'flex-end'}}>
             <ActivityIndicator
               size='large'
@@ -179,34 +179,3 @@ export default class RideMap extends Component {
     );
   }
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 65
-  },
-  mapContainer: {
-    flex:12
-  },
-  map: {
-    flex: 1,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    padding: 10,
-    backgroundColor: 'white'
-  },
-
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 20,
-  },
-  modalInnerContainer: {
-    height: 250,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-});

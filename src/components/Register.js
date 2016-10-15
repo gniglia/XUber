@@ -55,11 +55,11 @@ export default class Register extends Component {
         <View style={[styles.lalala]}>
           <Text style={styles.buttonContainerLabel}>Which are you today?</Text>
           <View style={[styles.buttonContainer]}>
-            <TouchableHighlight style={[styles.button]}
+            <TouchableHighlight underlayColor={ 'transparent' } style={[styles.button]}
               onPress={this.onDriverPress.bind(this)}>
               <Text style={styles.buttontext}>Im a driver</Text>
             </TouchableHighlight>
-            <TouchableHighlight style={[styles.button]}
+            <TouchableHighlight underlayColor={ 'transparent' } style={[styles.button]}
               onPress={this.onPassengerPress.bind(this)}>
               <Text style={styles.buttontext}>Im a passenger</Text>
             </TouchableHighlight>
